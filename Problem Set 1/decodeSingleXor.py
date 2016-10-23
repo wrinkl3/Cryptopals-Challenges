@@ -19,13 +19,7 @@ def decodeXor(cyphertext):
 	c = bytearray.fromhex(cyphertext)
 	plains = [applyKey(c, key) for key in range(256)]
 	highest = max([(plain, score(plain)) for plain in plains], key = lambda x:x[1])
-	# highest = (None, 0)
-	# for key in range(0, 256):
-	# 	plain = applyKey(c, key)
-	# 	pscore = score(plain)
-	# 	if highest[0] is None or pscore>highest[1]:
-	# 		highest = (plain, pscore)
-
+	
 	return highest	
 
 def main():
