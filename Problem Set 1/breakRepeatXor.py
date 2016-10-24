@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import sys, binascii
+import sys
 
 def popCount(b):
     return sum([(b>>i)&1 for i in range(8)])
