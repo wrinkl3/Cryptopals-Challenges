@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import sys, codecs, binascii
+import sys
 
 def applyKey(c, key):
 	res = [chr(x^key) for x in c]

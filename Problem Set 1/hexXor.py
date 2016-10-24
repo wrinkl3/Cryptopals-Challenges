@@ -4,7 +4,7 @@ import sys
 
 def hexXor(x, y):
 	if len(x) != len(y):
-		print("Oh noes! Strings not equal!")
+		raise ValueError("Oh noes! Strings not equal length!")
 		sys.exit()
 	xor = hex(int(x, 16)^int(y, 16))
 	return xor.lstrip('0x')
