@@ -6,24 +6,54 @@ def applyKey(c, key):
 	res = [chr(x^key) for x in c]
 	return ''.join(res)
 
-freq = "ETAOINSHRDLU"
+#freq = "ETAOINSHRDLU"
+freq = dict()
+freq['a']=834
+freq['b']=154
+freq['c']=273
+freq['d']=414
+freq['e']=1260
+freq['f']=203
+freq['g']=192
+freq['h']=611
+freq['i']=671
+freq['j']=23
+freq['k']=87
+freq['l']=424
+freq['m']=253
+freq['n']=680
+freq['o']=770
+freq['p']=166
+freq['q']=9
+freq['r']=568
+freq['s']=611
+freq['t']=937
+freq['u']=285
+freq['v']=106
+freq['w']=234
+freq['x']=20
+freq['y']=204
+freq['z']=6
+freq[' ']=2320
 
 def score(text):
 	score = 0
-	for i in range(len(freq)):
-		charCoeff = len(freq)-i
-		score = score + text.count(freq[i])*charCoeff
+	for c in text.lower():
+		if c in freq:
+			score+=freq[c]
 	return score
 
-def decodeXor(cyphertext):
-	c = bytearray.fromhex(cyphertext)
-	plains = [applyKey(c, key) for key in range(256)]
-	highest = max([(plain, score(plain)) for plain in plains], key = lambda x:x[1])
+def decodeXor(c):
+	plains = [(applyKey(c, key), key) for key in range(256)]
+	highest = max([(plain[0], score(plain[0]), plain[1]) for plain in plains], key = lambda x:x[1])
 	
-	return highest	
+	return highest
+
+def decodeXorFromString(cyphertext):
+	return decodeXor(bytearray.fromhex(cyphertext))	
 
 def main():
-	print(decodeXor(sys.argv[1])[0])
+	print(decodeXorFromString(sys.argv[1])[0])
 
 if __name__ == "__main__":
     main()
