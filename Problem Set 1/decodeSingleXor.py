@@ -53,7 +53,7 @@ def decodeXorFromString(cyphertext):
 	return decodeXor(bytearray.fromhex(cyphertext))	
 
 def main():
-	print(decodeXorFromString(sys.argv[1])[0])
+	print(decodeXorFromString(sys.argv[1]))
 
 if __name__ == "__main__":
     main()

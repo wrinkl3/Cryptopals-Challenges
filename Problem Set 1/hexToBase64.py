@@ -3,12 +3,16 @@
 import sys
 import codecs
 
+import base64
+
+
 def hexToBase64(s):
-	return codecs.encode(codecs.decode(s, "hex"), "base64").decode('utf8').strip('\n')
+	b = bytes.fromhex(s)
+	return(base64.b64encode(b).decode('ascii'))
 
 def main():
 	s = sys.argv[1]
-	print(s)
+	print(hexToBase64(s))
 
 if __name__ == "__main__":
     main()
