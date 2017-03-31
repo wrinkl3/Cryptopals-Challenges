@@ -17,7 +17,7 @@ def encryptString(string, key):
 
 def main():
 	res = encryptString(sys.argv[1], sys.argv[2])
-	print(codecs.encode(res, 'hex'))
+	print(codecs.encode(res, 'hex').decode('ascii'))
 
 if __name__ == "__main__":
     main()

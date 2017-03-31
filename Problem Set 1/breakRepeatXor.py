@@ -48,6 +48,8 @@ def main():
 	candidates = findKeySizeCandidates(cipherText)
 	print(candidates)
 	keys = [decodeUsingCandidate(cipherText, c) for c in candidates]
+	print(keys)
+	return
 	for k in keys:
 		print(repeatXor(k, cipherText))
 		print('aaaaaaaaaaaa')
